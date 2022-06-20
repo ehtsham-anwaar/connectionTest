@@ -216,11 +216,13 @@ def test_column_ordinal_positions(config_database):
 @pytest.mark.usefixtures("config_database")
 def test_column_data_types(config_database):
     dataTypesMapping = {
-        'bigint': ('bigint'), 'bit': ('boolean'),
+        'bigint': ('bigint'), 'bit': ('boolean'), 'uniqueidentifier': ('uuid'),
         'datetime': ('timestamp without time zone'), 'decimal': ('numeric'),
-        'int': ('integer'), 'nchar': ('character'),
-        'nvarchar': ('character varying', 'text'), 'uniqueidentifier': ('uuid'),
-        'varbinary': ('varbinary')
+        'int': ('integer'), 'nchar': ('character'), 'varbinary': ('varbinary', 'bytea'),
+        'nvarchar': ('character varying', 'text', 'varchar'), 'char': ('character'),
+        'datetime2': ('timestamp without time zone'), 'date': ('date'),
+        'image': ('bytea'), 'money': ('numeric'), 'ntext': ('text'),
+        'numeric': ('numeric'), 'smallint': ('smallint'), 'varchar': ('varchar', 'character varying', 'text')
     }
 
     config_database[0][0].execute(
